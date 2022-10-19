@@ -1,8 +1,10 @@
 output "AWS_CALLER_IDENTITY_ACCOUNT_ID" {
+  description = "Account ID for usage as reference"
   value = data.aws_caller_identity.current_identity.account_id
 }
 
 output "AWS_DEFAULT_REGION_DATA" {
+  description = "Data to get the default region for usage as reference and making 'AWS_REGION' an optional variable "
   value = data.aws_region.default_region.name
 }
 
