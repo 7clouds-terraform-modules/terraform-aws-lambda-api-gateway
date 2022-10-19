@@ -116,3 +116,13 @@ output "LAMBDA_WARMUP_SCHEDULE_EXPRESSION" {
   description = "Schedule Expression for Lambda Warm Up Events Rule"
   value       = var.LAMBDA_WARMUP_SCHEDULE_EXPRESSION
 }
+
+output "REST_API_ENDPOINT" {
+  description = "API Gateway swagger endpoint URL for current stage"
+  value       = "${aws_api_gateway_stage.api_gateway_stage.invoke_url}/teste"
+}
+
+output "API_GATEWAY_STAGE_ARN" {
+  description = "API Gateway Stage ARN for references"
+  value = aws_api_gateway_stage.api_gateway_stage.arn
+}
