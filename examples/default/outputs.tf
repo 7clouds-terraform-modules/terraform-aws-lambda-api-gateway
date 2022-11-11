@@ -18,13 +18,13 @@ output "API_GATEWAY_RESOURCE_PATH" {
 
 output "API_GATEWAY_METHOD_AUTHORIZATION" {
   description = "API Gateway Method Authorization"
-  value       =  module.lambda_api_gateway.API_GATEWAY_METHOD_AUTHORIZATION
+  value       = module.lambda_api_gateway.API_GATEWAY_METHOD_AUTHORIZATION
 
 }
 
 output "API_GATEWAY_METHOD_HTTP_METHOD" {
   description = "HTTP Method"
-  value       =  module.lambda_api_gateway.API_GATEWAY_METHOD_HTTP_METHOD
+  value       = module.lambda_api_gateway.API_GATEWAY_METHOD_HTTP_METHOD
 }
 
 output "ENVIRONMENT" {

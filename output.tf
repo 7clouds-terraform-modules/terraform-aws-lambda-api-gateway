@@ -1,11 +1,11 @@
 output "AWS_CALLER_IDENTITY_ACCOUNT_ID" {
   description = "Account ID for usage as reference"
-  value = data.aws_caller_identity.current_identity.account_id
+  value       = data.aws_caller_identity.current_identity.account_id
 }
 
 output "AWS_DEFAULT_REGION_DATA" {
   description = "Data to get the default region for usage as reference and making 'AWS_REGION' an optional variable "
-  value = data.aws_region.default_region.name
+  value       = data.aws_region.default_region.name
 }
 
 output "PROJECT_NAME" {
@@ -20,13 +20,13 @@ output "API_GATEWAY_RESOURCE_PATH" {
 
 output "API_GATEWAY_METHOD_AUTHORIZATION" {
   description = "API Gateway Method Authorization"
-  value       =  var.API_GATEWAY_METHOD_AUTHORIZATION
+  value       = var.API_GATEWAY_METHOD_AUTHORIZATION
 
 }
 
 output "API_GATEWAY_METHOD_HTTP_METHOD" {
   description = "HTTP Method"
-  value       =  var.API_GATEWAY_METHOD_HTTP_METHOD
+  value       = var.API_GATEWAY_METHOD_HTTP_METHOD
 }
 
 output "ENVIRONMENT" {
@@ -121,10 +121,10 @@ output "LAMBDA_WARMUP_SCHEDULE_EXPRESSION" {
 
 output "REST_API_ENDPOINT" {
   description = "API Gateway swagger endpoint URL for current stage"
-  value       = "${aws_api_gateway_stage.api_gateway_stage.invoke_url}/teste"
+  value       = "${aws_api_gateway_stage.api_gateway_stage.invoke_url}"
 }
 
 output "API_GATEWAY_STAGE_ARN" {
   description = "API Gateway Stage ARN for references"
-  value = aws_api_gateway_stage.api_gateway_stage.arn
+  value       = aws_api_gateway_stage.api_gateway_stage.arn
 }
