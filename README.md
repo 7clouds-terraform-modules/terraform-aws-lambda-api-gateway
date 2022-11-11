@@ -50,20 +50,6 @@ module "lambda_api_gateway" {
 }
 ```
 
-## Attention
-
-* Observation about the function element():
-
-```hcl
-resource "aws_cloudwatch_event_target" "lambda_warm_up_events_target" {
-  count      = var.WARMUP_ENABLED ? 1 : 0
-  target_id  = "${lower(var.PROJECT_NAME)}_lambda_warm_up_events_target"
-  arn        = aws_lambda_function.lambda_function.arn
-  rule       = element(aws_cloudwatch_event_rule.lambda_warm_up_events_rule.*.id, count.index) # element(list, index) - Returns a single element from a list at the given index. If the index is greater than the number of elements, this function will wrap using a standard mod algorithm. This function only works on flat lists
-  depends_on = [aws_lambda_permission.lambda_permission_warm_up]
-}
-```
-
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
