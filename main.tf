@@ -82,10 +82,9 @@ resource "aws_iam_role" "lambda_iam_role" {
   tags = var.TAGS != null ? "${merge(var.TAGS, { Name = "${var.PROJECT_NAME} Lambda Iam Role" })}" : { Name = "${var.PROJECT_NAME} Lambda Iam Role" }
 }
 
-resource "aws_iam_policy_attachment" "cloudwatch_deny_attach" {
+resource "aws_iam_role_policy_attachment" "this" {
   count      = length(var.IAM_ROLE_POLICY_ATTACHMENT_ARN_LIST)
-  name       = "${lower(var.PROJECT_NAME)}-iam-attachment-${count.index}"
-  roles      = [aws_iam_role.lambda_iam_role.name]
+  role       = aws_iam_role.lambda_iam_role.name
   policy_arn = element(var.IAM_ROLE_POLICY_ATTACHMENT_ARN_LIST, count.index)
 }
 
