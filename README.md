@@ -10,6 +10,10 @@ Please rank this repo 5 starts if you like our job!
 
 The module deploys a set of Lambda Function + API Gateway resources with its rightful roles and policies to create a serverless application.
 
+## Changes on Version 0.1.3
+
+We have dropped using the [aws_iam_role_policy_attachment resource](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment), since it has the same function as the managed_policy_arns argument in the [aws_iam_role resource](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) and using both simultaneously causes conflict in terraform.
+
 ## Small Fix on Version 0.1.2
 
 We have replaced aws_iam_policy_attachment for [aws_iam_role_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) considering the note on terraform's documentation.
@@ -50,7 +54,6 @@ module "lambda_api_gateway" {
   # ]
   API_GATEWAY_INTEGRATION_HTTP_METHOD = "POST"
   API_GATEWAY_INTEGRATION_INPUT_TYPE  = "AWS_PROXY"
-  # IAM_ROLE_POLICY_ATTACHMENT_ARN_LIST = ["YourIAMRolePolic(y/ies)ARNHere"]
 }
 ```
 
@@ -103,7 +106,6 @@ No modules.
 | <a name="input_ENVIRONMENT"></a> [ENVIRONMENT](#input\_ENVIRONMENT) | Environment Name | `string` | n/a | yes |
 | <a name="input_ENVIRONMENT_VARIABLES"></a> [ENVIRONMENT\_VARIABLES](#input\_ENVIRONMENT\_VARIABLES) | Lambda Environment Variables List | `map(any)` | `{}` | no |
 | <a name="input_HANDLER"></a> [HANDLER](#input\_HANDLER) | Lambda Function Handler | `string` | `"app.lambda_handler"` | no |
-| <a name="input_IAM_ROLE_POLICY_ATTACHMENT_ARN_LIST"></a> [IAM\_ROLE\_POLICY\_ATTACHMENT\_ARN\_LIST](#input\_IAM\_ROLE\_POLICY\_ATTACHMENT\_ARN\_LIST) | A list with the ARN(s) of the polic(y/ies) you want to apply | `list(string)` | `[]` | no |
 | <a name="input_LAMBDA_CODE_ZIP_FILE"></a> [LAMBDA\_CODE\_ZIP\_FILE](#input\_LAMBDA\_CODE\_ZIP\_FILE) | Lambda Function Zip File | `string` | n/a | yes |
 | <a name="input_LAMBDA_WARMUP_SCHEDULE_EXPRESSION"></a> [LAMBDA\_WARMUP\_SCHEDULE\_EXPRESSION](#input\_LAMBDA\_WARMUP\_SCHEDULE\_EXPRESSION) | Schedule Expression for Lambda Warm Up Events Rule | `string` | `"rate(5 minutes)"` | no |
 | <a name="input_LAYER_ARN_LIST"></a> [LAYER\_ARN\_LIST](#input\_LAYER\_ARN\_LIST) | List of Layer ARNs to be attached on Lambda Function | `list(any)` | `null` | no |
@@ -132,7 +134,6 @@ No modules.
 | <a name="output_ENVIRONMENT"></a> [ENVIRONMENT](#output\_ENVIRONMENT) | Environment Name |
 | <a name="output_ENVIRONMENT_VARIABLES"></a> [ENVIRONMENT\_VARIABLES](#output\_ENVIRONMENT\_VARIABLES) | Lambda Environment variables List |
 | <a name="output_HANDLER"></a> [HANDLER](#output\_HANDLER) | Lambda Function Handler |
-| <a name="output_IAM_ROLE_POLICY_ATTACHMENT_ARN_LIST"></a> [IAM\_ROLE\_POLICY\_ATTACHMENT\_ARN\_LIST](#output\_IAM\_ROLE\_POLICY\_ATTACHMENT\_ARN\_LIST) | A list with the ARN(s) of the polic(y/ies) you want to apply |
 | <a name="output_LAMBDA_CODE_ZIP_FILE"></a> [LAMBDA\_CODE\_ZIP\_FILE](#output\_LAMBDA\_CODE\_ZIP\_FILE) | Lambda Function Zip File |
 | <a name="output_LAMBDA_WARMUP_SCHEDULE_EXPRESSION"></a> [LAMBDA\_WARMUP\_SCHEDULE\_EXPRESSION](#output\_LAMBDA\_WARMUP\_SCHEDULE\_EXPRESSION) | Schedule Expression for Lambda Warm Up Events Rule |
 | <a name="output_LAYER_ARN_LIST"></a> [LAYER\_ARN\_LIST](#output\_LAYER\_ARN\_LIST) | List of Layer ARNs to be attached on Lambda Function |

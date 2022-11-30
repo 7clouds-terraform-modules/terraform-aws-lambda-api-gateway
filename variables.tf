@@ -15,7 +15,7 @@ variable "API_GATEWAY_METHOD_AUTHORIZATION" {
 }
 
 variable "API_GATEWAY_METHOD_HTTP_METHOD" {
-  description = "HTTP Method"
+  description = "API Gateway HTTP Method"
   type        = string
 }
 
@@ -53,15 +53,9 @@ variable "API_GATEWAY_INTEGRATION_HTTP_METHOD" {
 }
 
 variable "MANAGED_POLICY_ARNS" {
-  description = "Policy ARNs To Be Added to Lambda Function"
+  description = "Policy ARNs to be added to Lambda Function"
   type        = list(string)
   default     = null
-}
-
-variable "IAM_ROLE_POLICY_ATTACHMENT_ARN_LIST" {
-  description = "A list with the ARN(s) of the polic(y/ies) you want to apply"
-  type        = list(string)
-  default     = []
 }
 
 variable "COMPATIBLE_RUNTIMES" {
@@ -77,7 +71,7 @@ variable "MEMORY_SIZE" {
 }
 
 variable "TIMEOUT" {
-  description = "Timeout for lambda function "
+  description = "Timeout for lambda function"
   type        = number
   default     = 60
 }

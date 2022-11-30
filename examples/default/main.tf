@@ -18,7 +18,7 @@ module "lambda_api_gateway" {
   COMPATIBLE_RUNTIMES                 = "python3.8"
   LAMBDA_CODE_ZIP_FILE                = "YourLambdaCode.zip"
   SECURITY_GROUP_IDS                  = ["YourSecurityGroupsID(s)Here"]
-  SUBNET_IDS                          = ["YourSubnetsIDsHere"]
+  SUBNET_IDS                          = ["YourSubnetsID(s)Here"]
   LAYER_ARN_LIST                      = ["YourLayer(s)ARNHere"]
   WARMUP_ENABLED                      = true
   LAMBDA_WARMUP_SCHEDULE_EXPRESSION   = "rate(5 minutes)"
@@ -29,5 +29,4 @@ module "lambda_api_gateway" {
   MANAGED_POLICY_ARNS                 = ["YourManagedPolic(y/ies)Here"]
   API_GATEWAY_INTEGRATION_HTTP_METHOD = "POST"
   API_GATEWAY_INTEGRATION_INPUT_TYPE  = "AWS_PROXY"
-  IAM_ROLE_POLICY_ATTACHMENT_ARN_LIST = ["YourIAMRolePolic(y/ies)ARNHere"]
 }

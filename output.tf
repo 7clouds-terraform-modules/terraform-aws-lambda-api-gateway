@@ -55,13 +55,8 @@ output "API_GATEWAY_INTEGRATION_HTTP_METHOD" {
 }
 
 output "MANAGED_POLICY_ARNS" {
-  description = "Policy ARNs To Be Added to Lambda Function"
+  description = "Policy ARNs to be added to Lambda Function"
   value       = var.MANAGED_POLICY_ARNS
-}
-
-output "IAM_ROLE_POLICY_ATTACHMENT_ARN_LIST" {
-  description = "A list with the ARN(s) of the polic(y/ies) you want to apply"
-  value       = var.IAM_ROLE_POLICY_ATTACHMENT_ARN_LIST
 }
 
 output "COMPATIBLE_RUNTIMES" {
@@ -75,7 +70,7 @@ output "MEMORY_SIZE" {
 }
 
 output "TIMEOUT" {
-  description = "Timeout for lambda function "
+  description = "Timeout for lambda function"
   value       = var.TIMEOUT
 }
 

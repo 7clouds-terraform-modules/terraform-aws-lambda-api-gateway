@@ -82,12 +82,6 @@ resource "aws_iam_role" "lambda_iam_role" {
   tags = var.TAGS != null ? "${merge(var.TAGS, { Name = "${var.PROJECT_NAME} Lambda Iam Role" })}" : { Name = "${var.PROJECT_NAME} Lambda Iam Role" }
 }
 
-resource "aws_iam_role_policy_attachment" "this" {
-  count      = length(var.IAM_ROLE_POLICY_ATTACHMENT_ARN_LIST)
-  role       = aws_iam_role.lambda_iam_role.name
-  policy_arn = element(var.IAM_ROLE_POLICY_ATTACHMENT_ARN_LIST, count.index)
-}
-
 resource "aws_lambda_function" "lambda_function" {
   function_name = "${var.PROJECT_NAME}LambdaFunction"
   runtime       = var.COMPATIBLE_RUNTIMES
