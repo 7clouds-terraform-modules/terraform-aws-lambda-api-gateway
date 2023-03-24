@@ -111,3 +111,8 @@ output "LAMBDA_WARMUP_SCHEDULE_EXPRESSION" {
   description = "Schedule Expression for Lambda Warm Up Events Rule"
   value       = module.lambda_api_gateway.LAMBDA_WARMUP_SCHEDULE_EXPRESSION
 }
+
+output "CLOUDWATCH_LAMBDA_WARMUP_EVENTS_RULE_ARN" {
+  description = "Schedule Expression for Lambda Warm Up Events Rule"
+  value       = module.lambda_api_gateway.CLOUDWATCH_LAMBDA_WARMUP_EVENTS_RULE_ARN
+}

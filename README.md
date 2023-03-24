@@ -10,6 +10,12 @@ Please rank this repo 5 starts if you like our job!
 
 The module deploys a set of Lambda Function + API Gateway resources with its rightful roles and policies to create a serverless application.
 
+## Changes on Version 0.1.4
+
+- Added the source_code_hash argument to [lambda_function resource](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function#source_code_hash), allowing to trigger updates to lambda function upon changes in the code and recompressing its contents.
+- Updated the value of the uri argument on the [api_gateway_integration resource](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_integration#uri), now it references the FunctionName variable defined on the [api_gateway_stage resource](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_stage#variables) instead of the lambda_function resource directly.
+- Added the output of the aws_cloudwatch_event_rule.lambda_warm_up_events_rule.arn attribute. 
+
 ## Changes on Version 0.1.3
 
 We have dropped using the [aws_iam_role_policy_attachment resource](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment), since it has the same function as the managed_policy_arns argument in the [aws_iam_role resource](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) and using both simultaneously causes conflict in terraform.

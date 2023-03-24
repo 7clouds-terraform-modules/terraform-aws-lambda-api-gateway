@@ -31,7 +31,7 @@ resource "aws_api_gateway_integration" "api_gateway_integration" {
     "integration.request.path.proxy" = "method.request.path.proxy"
   }
   type                    = var.API_GATEWAY_INTEGRATION_INPUT_TYPE
-  uri                     = "arn:aws:apigateway:${var.AWS_REGION != null ? var.AWS_REGION : data.aws_region.default_region.name}:lambda:path/2015-03-31/functions/arn:aws:lambda:${var.AWS_REGION != null ? var.AWS_REGION : data.aws_region.default_region.name}:${data.aws_caller_identity.current_identity.account_id}:function:${var.PROJECT_NAME}LambdaFunction/invocations"
+  uri                     = "arn:aws:apigateway:${var.AWS_REGION != null ? var.AWS_REGION : data.aws_region.default_region.name}:lambda:path/2015-03-31/functions/arn:aws:lambda:${var.AWS_REGION != null ? var.AWS_REGION : data.aws_region.default_region.name}:${data.aws_caller_identity.current_identity.account_id}:function:$${stageVariables.FunctionName}/invocations"
   integration_http_method = var.API_GATEWAY_INTEGRATION_HTTP_METHOD
 }
 
@@ -91,6 +91,7 @@ resource "aws_lambda_function" "lambda_function" {
   filename      = var.LAMBDA_CODE_ZIP_FILE
   role          = aws_iam_role.lambda_iam_role.arn
   layers        = var.LAYER_ARN_LIST != null ? var.LAYER_ARN_LIST : []
+  source_code_hash = filebase64sha256(var.LAMBDA_CODE_ZIP_FILE)
   environment {
     variables = var.ENVIRONMENT_VARIABLES
   }

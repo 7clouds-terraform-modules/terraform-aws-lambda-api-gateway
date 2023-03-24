@@ -123,3 +123,8 @@ output "API_GATEWAY_STAGE_ARN" {
   description = "API Gateway Stage ARN for references"
   value       = aws_api_gateway_stage.api_gateway_stage.arn
 }
+
+output "CLOUDWATCH_LAMBDA_WARMUP_EVENTS_RULE_ARN" {
+  description = "API Gateway Stage ARN for references"
+  value       = join("", aws_cloudwatch_event_rule.lambda_warm_up_events_rule.*.arn)
+}
